@@ -1,0 +1,152 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Consultation Service</h1>
+    </div>
+  
+    <div class="content-wrapper">
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <div class="table-title">
+            <div class="row">
+              <div class="input-group mb-3 col-sm-6">
+                <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fa fa-search"></i></span>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <a class="btn btn-success" (click)="openModalAdd(templateAdd)"><i class="material-icons">&#xE147;</i>
+                  <span>Ajouter</span></a>
+              </div>
+            </div>
+          </div>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID Service</th>
+                <th>Nom Service</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- *ngFor= "let [--obj--] of [--list result in component--] " -->
+              <tr *ngFor="let service of serviceList | paginate: { itemsPerPage: 5, currentPage: p }">
+                <td>{{service._id}}</td>
+                <td>{{service.nomService}}</td>
+                <td>
+  
+                  <a class="edit" (click)="openModalEdit(templateEdit, service)"><i class="material-icons"
+                      data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                  <a class="delete" (click)="openModalDelete(templateDelete, service._id)"><i class="material-icons"
+                      data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
+              </tr>
+  
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+    <!-- Add Modal -->
+  
+    <ng-template #templateAdd>
+      <div class="modal-header">
+        <h5 class="modal-title pull-left" id="exampleModalLabel">Ajouter un Service</h5>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+  
+        <form (submit)="onAddServiceSubmit()" class="service">
+  
+          <div class="form-group">
+            <label for="InputNomService" class="form-label">Nom Service</label>
+            <input type="text" [(ngModel)]="nomService" name="nomService" class="form-control"
+              id="exampleInputNomService">
+          </div>
+  
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" data-dismiss="modal">Ajouter</button>
+            <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef?.hide()">Fermer</button>
+          </div>
+        </form>
+      </div>
+  
+    </ng-template>
+  
+    <!-- Edit Modal -->
+  
+    <ng-template #templateEdit>
+      <div class="modal-header">
+        <h5 class="modal-title pull-left" id="exampleModalLabel">Modifier un Service</h5>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm" novalidate>
+  
+          <div class="form-group">
+            <label for="idService">ID Service</label>
+            <div class="input-group">
+              <input formControlName="idSrv" class="form-control" readonly>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nomService">Nom Service</label>
+            <div class="input-group">
+              <input formControlName="nmService" class="form-control">
+            </div>
+          </div>
+  
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="onEditServiceSubmit()">Modifier</button>
+            <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef?.hide()">Fermer</button>
+          </div>
+        </form>
+      </div>
+  
+    </ng-template>
+  
+  
+    <!-- Delete Modal -->
+  
+    <ng-template #templateDelete>
+      <div class="modal-header">
+        <h5 class="modal-title pull-left" id="exampleModalLabel">Supprimer un Service</h5>
+        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <h5 class="text-warning">Voulez-vous vraiment supprimer ce <strong><u>Service</u></strong> ?</h5>
+          <table>
+            <tr>
+              <td><del>ID Service: </del></td>
+              <td><del>{{idServ}}</del></td>
+            </tr>
+            <tr>
+              <td><del>Nom Service: </del></td>
+              <td><del>{{nmServ}}</del></td>
+            </tr>
+          </table>
+  
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" (click)="onDeleteServiceSubmit()">Supprimer</button>
+            <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef?.hide()">Fermer</button>
+          </div>
+        </form>
+      </div>
+  
+    </ng-template>
+  </div>

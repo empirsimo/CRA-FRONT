@@ -1,0 +1,169 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Demande Congés</h1>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">CONGÉ ANNUEL</h6>
+                </div>
+                <div class="card-body">
+                    <p>Annuellement, chaque salarié a le droit de bénéficier de 5 semaines de congés payés, sans compter
+                        les jours fériés et les ponts que l’employeur accorde à l’ensemble des employés (selon
+                        différentes formules, et en respectant la loi et les plannings de l’entreprise). Ce droit est
+                        ouvert quel que soit l’emploi occupé, la qualification de la personne, ses horaires de travail
+                        (temps plein ou partiel).
+                        Ils ne peuvent pas être reportés d'une année sur l'autre, sauf autorisation exceptionnelle de
+                        l'administration.
+                    </p>
+                    <div class="row">
+                        <div class="col">
+                            <a target="_blank" rel="nofollow"
+                                href="https://www.service-public.fr/particuliers/vosdroits/F488">Lire
+                                La Suite... &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">CONGÉ QUARANTAINE</h6>
+                </div>
+                <div class="card-body">
+                    <p>La quarantaine signifie que vous êtes préventivement écarté(e) pour limiter une potentielle
+                        propagation de la Covid-19. L’isolement signifie que vous devez rester à la maison parce que
+                        vous êtes malade ou avez été testé(e) positif(ve) au coronavirus.</p>
+                    <div class="row">
+                        <div class="col">
+                            <a target="_blank" rel="nofollow"
+                                href="https://www.info-coronavirus.be/fr/quarantaine-isolement/#:~:text=La%20quarantaine%20signifie%20que%20vous,positif(ve)%20au%20coronavirus.">Lire
+                                La Suite... &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">CONGÉ PARENTAL</h6>
+                </div>
+                <div class="card-body">
+                    <p>À l'occasion de la naissance ou de l'arrivée au foyer d'un enfant, le salarié peut arrêter de
+                        travailler pour s'occuper de l'enfant. Dans ce cas, il bénéficie d'un congé parental
+                        d'éducation, sous conditions d'ancienneté. La durée du congé varie en fonction du nombre
+                        d’enfants nés ou adoptés simultanément.</p>
+                    <div class="row">
+                        <div class="col">
+                            <a target="_blank" rel="nofollow"
+                                href="https://www.service-public.fr/particuliers/vosdroits/F2280#:~:text=%C3%80%20l'occasion%20de%20la,enfants%20n%C3%A9s%20ou%20adopt%C3%A9s%20simultan%C3%A9ment.">Lire
+                                La Suite... &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">CONGÉ MALADIE</h6>
+                </div>
+                <div class="card-body">
+                    <p>En cas de maladie attestée par un certificat médical le mettant dans l'impossibilité d'exercer
+                        ses fonctions, le fonctionnaire (stagiaire ou titulaire) a droit à des congés de maladie dits
+                        congé de maladie "ordinaire".
+                        La durée totale des congés de maladie ordinaire peut atteindre 1 an, pendant une période de 12
+                        mois consécutifs (année médicale).
+                        L'année médicale est mobile et s'apprécie de date à date. Tous les jours calendaires sont pris
+                        en compte.
+                    </p>
+                    <div class="row">
+                        <div class="col">
+                            <a target="_blank" rel="nofollow"
+                                href="https://www.fonction-publique.gouv.fr/conge-maladie#:~:text=Dur%C3%A9e%20du%20cong%C3%A9,calendaires%20sont%20pris%20en%20compte.">Lire
+                                La Suite... &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">DÉPOSER UNE DEMANDE DE CONGÉ</h6>
+                </div>
+                <div class="card-body">
+                    <form (submit)="onAddCongeSubmit()" class="conge">
+                    <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label">Type de Congé</label>
+                                    <div class="input-group">
+                                        <select class="form-control" aria-label="Default select example" [(ngModel)]="typeCng" name="typeCng"
+                                        id="exampleidUser">
+                                            <option value="">Sélectionner...</option>
+                                            <option *ngFor="let tyCg of listTypeConge" value="{{tyCg}}">{{tyCg}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">À partir du</label>
+                                    <div class="input-group">
+                                        <input id="startDate" class="form-control" type="date" [(ngModel)]="dtDebut" name="dtDebut" />
+                                        <span id="startDateSelected"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">Jusqu'au</label>
+                                    <div class="input-group">
+                                        <input id="endDate" class="form-control" type="date" [(ngModel)]="dtFin" name="dtFin"/>
+                                        <span id="endDateSelected"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="form-label">Raison</label>
+                                    <div class="input-group">
+                                        <textarea class="form-control"
+                                            placeholder="Écrivez un message ici..." [(ngModel)]="raison" name="raison"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <br>
+                                <button type="submit" class="btn btn-success" class="btn btn-primary form-control">Envoyer</button>
+                            </div>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

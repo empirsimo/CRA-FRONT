@@ -1,0 +1,273 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Liste Contrat</h1>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="input-group mb-3 col-sm-6">
+              <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <a class="btn btn-success" (click)="openModalAdd(templateAdd)"><i class="material-icons">&#xE147;</i>
+                <span>Ajouter</span></a>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>ID Contrat</th>
+              <th>Type de Contrat</th>
+              <th>Nbr heures de travail (Semaine) </th>
+              <th>Salaire Brut</th>
+              <th>Nbr Congés Payés (30 Jr)</th>
+              <th>ID Utilisateur</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- *ngFor= "let [--obj--] of [--list result in component--] " -->
+            <tr *ngFor="let contrat of contratList | paginate: { itemsPerPage: 5, currentPage: p }">
+              <td>{{contrat._id}}</td>
+              <td>{{contrat.typeContrat}}</td>
+              <td>{{contrat.nbrHeure}}</td>
+              <td>{{contrat.salaireBrut}}</td>
+              <td>{{contrat.nbrConges}}</td>
+              <td><a (click)="openUserModal(templateUser, contrat.utilisateur)">{{contrat.utilisateur}}</a></td>
+              <td>
+
+                <a class="edit" (click)="openModalEdit(templateEdit, contrat)"><i class="material-icons"
+                    data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a class="delete" (click)="openModalDelete(templateDelete, contrat._id)"><i class="material-icons"
+                    data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- View User Modal -->
+
+  <ng-template #templateUser>
+    <div class="modal-header">
+      <h5 class="modal-title pull-left" id="exampleModalLabel">Profil Utilisateur</h5>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form>
+        <div class="form-group">
+          <label for="utilisateurId">ID Utilisateur</label>
+          <div class="input-group">
+            <input id="idUser" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nomUser">Nom</label>
+          <div class="input-group">
+            <input id="nom" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prenomUser">Prenom</label>
+          <div class="input-group">
+            <input id="prenom" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="emailAdresse">Email</label>
+          <div class="input-group">
+            <input id="email" class="form-control" readonly>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef?.hide()">Fermer</button>
+    </div>
+
+  </ng-template>
+
+
+  <!-- Add Modal -->
+
+  <ng-template #templateAdd>
+    <div class="modal-header">
+      <h5 class="modal-title pull-left" id="exampleModalLabel">Ajouter un Contrat</h5>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form (submit)="onAddContratSubmit()" class="contrat">
+
+        <div class="form-group">
+          <label for="InputTypeContrat" class="form-label">Type de Contrat</label>
+          <input type="text" [(ngModel)]="typeContrat" name="typeContrat" class="form-control"
+            id="exampleInputTypeContrat">
+        </div>
+
+        <div class="form-group">
+          <label for="InputNbrHeures" class="form-label">Nbr heures de travail (Semaine)</label>
+          <input type="text" [(ngModel)]="nbrHeure" name="nbrHeure" class="form-control" id="exampleInputNbrHeures">
+        </div>
+
+        <div class="form-group">
+          <label for="InputSalaireBrut" class="form-label">Salaire Brut</label>
+          <input type="text" [(ngModel)]="salaireBrut" name="salaireBrut" class="form-control"
+            id="exampleInputSalaireBrut">
+        </div>
+
+        <div class="form-group">
+          <label for="InputNbrConges" class="form-label">Nbr Congés Payés (30 Jr)</label>
+          <input type="text" [(ngModel)]="nbrConges" name="nbrConges" class="form-control" id="exampleInputNbrConges">
+        </div>
+
+        <div class="form-group">
+          <label for="InputUtilisateur" class="form-label">Utilisateur</label>
+          <select class="form-control" aria-label="Default select example" [(ngModel)]="userId" name="userId"
+            id="exampleidUser">
+            <option value="" selected>Sélectionner...</option>
+            <option *ngFor="let user of usersList" value="{{user._id}}">{{user.nom+" "+user.prenom}}</option>
+          </select>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" data-dismiss="modal">Ajouter</button>
+          <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef?.hide()">Fermer</button>
+        </div>
+      </form>
+    </div>
+
+  </ng-template>
+
+  <!-- Edit Modal -->
+
+  <ng-template #templateEdit>
+    <div class="modal-header">
+      <h5 class="modal-title pull-left" id="exampleModalLabel">Modifier un Contrat</h5>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editForm" novalidate>
+
+        <div class="form-group">
+          <label for="idContrat">ID Contrat</label>
+          <div class="input-group">
+            <input formControlName="idCrt" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="typeContrat">Type Contrat</label>
+          <div class="input-group">
+            <input formControlName="tyContrat" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nbrHeure">Nbr heures de travail (Semaine)</label>
+          <div class="input-group">
+            <input formControlName="nbH" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="salaireBrut">Salaire Brut</label>
+          <div class="input-group">
+            <input formControlName="salBrut" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nbrConges">Nbr Congés Payés (30 Jr)</label>
+          <div class="input-group">
+            <input formControlName="nbConge" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="utilisateur" class="form-label">Nom Utilisateur</label>
+          <div class="input-group">
+            <select class="form-control" formControlName="utils" aria-label="Default select example">
+              <option selected>Sélectionner...</option>
+              <option *ngFor="let user of usersList" value="{{user._id}}">{{user.nom+" "+user.prenom}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" (click)="onEditContratSubmit()">Modifier</button>
+          <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef?.hide()">Fermer</button>
+        </div>
+      </form>
+    </div>
+
+  </ng-template>
+
+
+  <!-- Delete Modal -->
+
+  <ng-template #templateDelete>
+    <div class="modal-header">
+      <h5 class="modal-title pull-left" id="exampleModalLabel">Supprimer un Contrat</h5>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <h5 class="text-warning">Voulez-vous vraiment supprimer ce <strong><u>contrat</u></strong> ?</h5>
+        <table>
+          <tr>
+            <td><del>ID Contrat: </del></td>
+            <td><del>{{idCont}}</del></td>
+          </tr>
+          <tr>
+            <td><del>Type de Contrat: </del></td>
+            <td><del>{{tyCont}}</del></td>
+          </tr>
+          <tr>
+            <td><del>Nbr heures de travail (Semaine): </del></td>
+            <td><del>{{nbrH}}</del></td>
+          </tr>
+          <tr>
+            <td><del>Salaire Brut: </del></td>
+            <td><del>{{salaireB}}</del></td>
+          </tr>
+          <tr>
+            <td><del>Nbr Congés Payés (30 Jr): </del></td>
+            <td><del>{{nbrC}}</del></td>
+          </tr>
+          <tr>
+            <td><del>ID Utilisateur: </del></td>
+            <td><del>{{idUser}}</del></td>
+          </tr>
+        </table>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" (click)="onDeleteContratSubmit()">Supprimer</button>
+          <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modalRef?.hide()">Fermer</button>
+        </div>
+      </form>
+    </div>
+
+  </ng-template>
+</div>

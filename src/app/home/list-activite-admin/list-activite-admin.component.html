@@ -1,0 +1,39 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Consultation Activités -AD-</h1>
+    </div>
+
+
+    <form class="form-inline justify-content-center">
+        <div class="form-group mb-4">
+            <label class="control-label">Nom Utilisateur :</label>
+        </div>
+        <div class="form-group mx-sm-3 mb-4">
+            <div class="input-group">
+                <select [(ngModel)]="userId" name="userId" (ngModelChange)="onListActiviteByUser()" class="form-control"
+                    aria-label="Default select example">
+                    <option value="">Sélectionner un utilisateur...</option>
+                    <option *ngFor="let user of usersList" value="{{user._id}}">{{user.nom+" "+user.prenom}}</option>
+                </select>
+            </div>
+        </div>
+    </form>
+
+    <!-- Content Row -->
+    <div class="content-wrapper">
+        <ejs-schedule #scheduleObj width="100%" height="756px" [eventSettings]="eventSettings"
+            [selectedDate]="selectedDate" [(currentView)]="setView">
+            <e-views>
+                <e-view option="WorkWeek" startHour="09:00" endHour="18:00"></e-view>
+                <e-view option="Day" startHour="09:00" endHour="18:00"></e-view>
+                <e-view option="Month"></e-view>
+                <e-view option="Year" [showWeekNumber]="showWeekNumber"></e-view>
+            </e-views>
+
+        </ejs-schedule>
+
+    </div>
+
+</div>

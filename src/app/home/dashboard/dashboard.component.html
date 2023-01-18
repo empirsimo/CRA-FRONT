@@ -1,0 +1,237 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                    class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Temps de Travail (Semaine)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{nbrH}} h</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Salaire Brut</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{salaireB}} €</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-euro-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Durée Congés Payés (30
+                                jours)
+                            </div>
+                            <div class="row no-gutters align-items-center">
+                                <div class="col-auto">
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{nbrC}} jr</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Requests Card Example -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Contrat de Travail</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{tyCont}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-file-contract fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row 1 -->
+    <div class="row">
+
+        <!-- Content Column -->
+        <div class="col-lg-6 mb-4">
+
+            <!-- TEMPS DE TRAVAIL -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">TEMPS DE TRAVAIL</h6>
+                </div>
+                <div class="card-body">
+                    <div class="logo">
+                        <div class="row">
+                            <div class="col"></div>
+                            <div class="col">
+                                <img src="assets\img\siteon0.png" alt="" width="196" height="178">
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                    <p>La durée légale de travail effectif des salariés à temps complet est fixée à trente-cinq heures par semaine, pour toutes les entreprises quel que soit leur effectif. 
+                        Il s’agit d’une durée de référence, un seuil à partir duquel, sauf exceptions, sont calculées les heures supplémentaires. 
+                        Il ne s’agit ni d’une durée minimale (les salariés peuvent être employés à temps partiel), ni d’un maximum
+                        (sauf, sous réserve de quelques dérogations, pour les travailleurs de moins de 18 ans) : 
+                        des heures supplémentaires peuvent être accomplies dans le respect des durées maximales au-delà desquelles aucun travail ne peut être demandé</p>
+                    <div class="row">
+                        <div class="col">
+                            <a target="_blank" rel="nofollow"
+                                href="https://travail-emploi.gouv.fr/droit-du-travail/temps-de-travail/article/la-duree-legale-du-travail">Lire
+                                La Suite... &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+            <div class="col-lg-6 mb-4">
+
+                <!-- PAIEMENT DU SALAIRE -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">PAIEMENT DU SALAIRE</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="logo">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <img src="assets\img\bloc-marque-interieur.svg" alt=""  width="196" height="178">
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                        <p>Le paiement du salaire est réglementé : il est versé par l'employeur au salarié de manière périodique et par mode de paiement précis (virement, chèque ou espèces). 
+                            L'employeur est tenu de respecter ces conditions de versement. Le salarié peut contester les conditions de non-paiement de son salaire. 
+                            L'employeur peut exiger des conditions de remboursement en cas de trop perçu par le salarié.</p>
+                        <div class="row">
+                            <div class="col">
+                                <a target="_blank" rel="nofollow"
+                                    href="https://www.demarches.interieur.gouv.fr/professionnels/paiement-salaire">Lire
+                                    La Suite... &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+        <!-- Content Row 2 -->
+        <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+                <!-- DURÉE CONGÉS PAYÉS -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">LES CONGÉS PAYÉS</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="logo">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <img src="assets\img\siteon0.png" alt=""  width="196" height="178">
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                        <p>Tout salarié a droit chaque année à un congé payé à la charge de l’employeur. 
+                            Chaque mois de travail effectif ouvre droit à un congé de 2,5 jours ouvrables. 
+                            Pendant les congés, l’employeur verse au salarié une indemnité de congés payés.</p>
+                        <div class="row">
+                            <div class="col">
+                                <a target="_blank" rel="nofollow"
+                                    href="https://travail-emploi.gouv.fr/droit-du-travail/les-conges-payes-et-les-conges-pour-projets-pro-et-perso/article/les-conges-payes">Lire
+                                    La Suite... &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 mb-4">
+
+                <!-- CONTRAT DE TRAVAIL -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">LES CONTRATS DE TRAVAIL</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="logo">
+                            <div class="row">
+                                <div class="col"></div>
+                                <div class="col">
+                                    <img src="assets\img\siteon0.png" alt=""  width="196" height="178">
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                        <p>Le contrat de travail existe dès l’instant où une personne (le salarié) 
+                            s’engage à travailler, moyennant rémunération, pour le compte et 
+                            sous la direction d’une autre personne (l’employeur). Le contrat de 
+                            travail doit en général être écrit. Il précise la rémunération, la 
+                            qualification, la durée du travail et, plus généralement, les 
+                            attributions du salarié. Il entraîne un certain nombre d’obligations, 
+                            tant pour le salarié que pour l’employeur. Il existe différents types de 
+                            contrat de travail selon leur durée, l’activité de l’employeur ou la 
+                            nature du travail confié au salarié…</p>
+                        <div class="row">
+                            <div class="col">
+                                <a target="_blank" rel="nofollow"
+                                    href="https://travail-emploi.gouv.fr/droit-du-travail/les-contrats-de-travail/">Lire
+                                    La Suite... &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <!-- /.container-fluid -->

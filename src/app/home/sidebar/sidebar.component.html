@@ -1,0 +1,153 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fa-brands fa-typo3"></i>
+        </div>
+        <div class="sidebar-brand-text mx-2">CR Activity</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="dashboard">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Interface
+    </div>
+
+    <!-- Nav Item - Activité Menu -->
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseActivite"
+            aria-expanded="true" aria-controls="collapseActivite">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Activités</span>
+        </a>
+        <div id="collapseActivite" class="collapse" aria-labelledby="headingActivite" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Détail de Composant :</h6>
+                <ng-container *ngIf="authService.isHasRoles(['user'])">
+                    <a class="collapse-item" href="activite">Créer Activités</a>
+                    <a class="collapse-item" href="listActivite">Consultation Activités</a>
+                </ng-container>
+                <ng-container *ngIf="authService.isHasRoles(['admin'])">
+                    <a class="collapse-item" href="listActiviteAdmin">Consultation Activités -AD-</a>
+                </ng-container>
+
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Addons
+    </div>
+
+    <!-- Nav Item - Congés Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseConges"
+            aria-expanded="true" aria-controls="collapseConges">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Congés</span>
+        </a>
+        <div id="collapseConges" class="collapse" aria-labelledby="headingConges" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Détail de Composant :</h6>
+                <ng-container *ngIf="authService.isHasRoles(['user'])">
+                    <a class="collapse-item" href="leaveRequest">Demande Congés</a>
+                    <a class="collapse-item" href="listLeave">Consultation Congés</a>
+                </ng-container>
+                <ng-container *ngIf="authService.isHasRoles(['admin'])">
+                    <a class="collapse-item" href="listLeaveAdmin">Consultation Congés -AD-</a>
+                </ng-container>
+
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <ng-container *ngIf="authService.isHasRoles(['admin'])">
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Addons
+        </div>
+
+        <!-- Nav Item - Référentiel Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReferentiel"
+                aria-expanded="true" aria-controls="collapseReferentiel">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Référentiel</span>
+            </a>
+            <div id="collapseReferentiel" class="collapse" aria-labelledby="headingReferentiel"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Détail de Composant :</h6>
+                    <a class="collapse-item" href="users">Consultation Utilisateur</a>
+                    <a class="collapse-item" href="contrat">Consultation Contrat</a>
+                    <a class="collapse-item" href="service">Consultation Service</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+    </ng-container>
+
+    <!-- Heading -->
+    <!-- <div class="sidebar-heading">
+        Addons
+    </div> -->
+
+    <!-- Nav Item - Paramètres Menu -->
+    <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseParametres"
+            aria-expanded="true" aria-controls="collapseParametres">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Paramètres</span>
+        </a>
+        <div id="collapseParametres" class="collapse" aria-labelledby="headingParametres"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Compte:</h6>
+                <a class="collapse-item" href="profile">Profile</a>
+                <a class="collapse-item" href="updatePassword">Modifier mot de passe</a>
+            </div>
+        </div>
+    </li> -->
+
+    <!-- Divider -->
+    <!-- <hr class="sidebar-divider d-none d-md-block"> -->
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+    <!-- Sidebar Message -->
+    <!-- <div class="sidebar-card d-none d-lg-flex">
+        <img class="sidebar-card-illustration mb-2" src="assets\img\undraw_rocket.png" alt="...">
+        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!
+        </p>
+        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+    </div> -->
+
+</ul>
+<!-- End of Sidebar -->
